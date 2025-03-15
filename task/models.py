@@ -4,6 +4,7 @@ from user.models import User
 
 NULLABLE = {'blank': True, 'null': True}
 
+
 class Task(models.Model):
     STATUS = (('active', 'активная'),
               ('accept', 'взята на исполнение'),
@@ -38,3 +39,11 @@ class Task(models.Model):
         choices=STATUS,
         default='active',
         verbose_name='статус задачи')
+
+    def __str__(self):
+        return f'Задача:{self.title} срок: {self.deadline} статус: {self.status}'
+
+    class Meta:
+        verbose_name = 'Задача'
+        verbose_name_plural = 'Задачи'
+        ordering = ['status']
