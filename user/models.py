@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+
 NULLABLE = {'blank': True, 'null': True}
 
 
@@ -22,7 +23,6 @@ class User(AbstractUser):
         max_length=50,
         verbose_name='Ф',
         help_text='Укажите свою фамилию')
-
     position = models.CharField(
         max_length=100,
         verbose_name='Должность пользователя',

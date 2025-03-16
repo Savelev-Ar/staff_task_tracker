@@ -21,7 +21,8 @@ class TaskDeleteTestCase(APITestCase):
     def test_create_task(self):
         self.data = {
             "title": 'опиши CRUD модели',
-            "deadline": timezone.now().date()
+            "deadline": timezone.now().date(),
+            "executor": self.user.pk
         }
         url = reverse('task:task-create')
         response = self.client.post(url, self.data)
