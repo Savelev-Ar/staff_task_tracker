@@ -7,13 +7,10 @@ from user.views import (UserCreateAPIView,
                         UserListAPIView,
                         UserRetrieveAPIView,
                         UserUpdateAPIView,
-                        UserDestroyAPIView,
-                        BusyUserViewSet)
+                        UserDestroyAPIView)
 
 app_name = UserConfig.name
 
-router = DefaultRouter()
-router.register(r'busy', BusyUserViewSet, basename='user')
 
 urlpatterns = [
     path('register/', UserCreateAPIView.as_view(), name='register'),
@@ -23,5 +20,4 @@ urlpatterns = [
     path('<int:pk>/', UserRetrieveAPIView.as_view(), name='user'),
     path('update/<int:pk>/', UserUpdateAPIView.as_view(), name='user-update'),
     path('delete/<int:pk>/', UserDestroyAPIView.as_view(), name='user-delete'),
-] + router.urls
-
+]

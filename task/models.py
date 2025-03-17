@@ -38,6 +38,9 @@ class Task(models.Model):
         choices=STATUS,
         default='active',
         verbose_name='статус задачи')
+    is_important = models.BooleanField(
+        verbose_name="Признак важности задачи",
+        default=False)
 
     def __str__(self):
         return f'Задача:{self.title} срок: {self.deadline} статус: {self.status}'
