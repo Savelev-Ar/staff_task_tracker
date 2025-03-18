@@ -1,5 +1,4 @@
 from rest_framework import serializers
-from user.serializers import UserSerializer
 from task.models import Task
 from user.models import User
 
@@ -9,6 +8,13 @@ class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
         fields = '__all__'
+
+
+class ExecutorSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'middle_name', 'last_name']
 
 
 class BusyUserSerializer(serializers.ModelSerializer):
@@ -73,13 +79,12 @@ class ImportantTaskSerializer(serializers.ModelSerializer):
                 result = parent_task_executor
         else:
             result = available_executor
-        return UserSerializer(result).data
+        return ExecutorSerializer(result).data
 
     class Meta:
         model = Task
         fields = (
             'title',
             'deadline',
-            'available_executors',
-            'is_important'
+            'available_executors'
         )

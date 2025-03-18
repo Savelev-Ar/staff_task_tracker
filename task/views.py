@@ -29,15 +29,13 @@ class TaskDestroyAPIView(generics.DestroyAPIView):
     serializer_class = TaskSerializer
     queryset = Task.objects.all()
 
+
 class ImportantTaskViewSet(viewsets.ViewSet):
 
     def list(self, request):
-        queryset = Task.objects.all()
-        #queryset = Task.objects.filter(status='active', is_important=True, parent_task__status='accept')
+        queryset = Task.objects.filter(status='active', is_important=True)
         serializer = ImportantTaskSerializer(queryset, many=True)
-        #serializer_data = filter(lambda k: k['is_important_task'], serializer.data)
         return Response(serializer.data)
-
 
 
 class BusyUserViewSet(viewsets.ViewSet):
