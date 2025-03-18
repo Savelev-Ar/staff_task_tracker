@@ -13,8 +13,8 @@ from task.views import (TaskCreateAPIView,
 app_name = TaskConfig.name
 
 router = DefaultRouter()
-router.register(r'important', ImportantTaskViewSet, basename='task')
-router.register(r'busy', BusyUserViewSet, basename='user')
+router.register(r'important', ImportantTaskViewSet, basename='important')
+router.register(r'busy', BusyUserViewSet, basename='busy-user')
 
 urlpatterns = [
     path('create/', TaskCreateAPIView.as_view(), name='task-create'),

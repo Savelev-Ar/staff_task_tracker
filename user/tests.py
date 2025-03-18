@@ -44,12 +44,7 @@ class TaskDeleteTestCase(APITestCase):
             User.objects.get(pk=self.user.pk)
 
     def test_update_user(self):
-        url = reverse('user:user-update', kwargs={"pk": self.task.pk})
+        url = reverse('user:user-update', kwargs={"pk": self.user.pk})
         self.data = {"last_name": "Да фамилия"}
         response = self.client.patch(url, self.data)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-    def test_get_busy_user_list(self):
-        url = reverse('user:user-busy')
-        response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)

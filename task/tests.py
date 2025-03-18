@@ -45,3 +45,8 @@ class TaskDeleteTestCase(APITestCase):
         self.data = {"description": "описать модели User и Task"}
         response = self.client.patch(url, self.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_get_busy_user_list(self):
+        url = '/task/busy/'
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
